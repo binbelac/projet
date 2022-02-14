@@ -67,93 +67,134 @@ L'API vous renvoie 4 types d'erreur:
 . 404: Not found
 
 ## Endpoints
-. ## GET/books
+. ## GET/livres
 
     GENERAL:
         Cet endpoint retourne la liste des objets livres, la valeur du succès et le total des livres. 
     
         
-    EXEMPLE: curl http://localhost:5000/books
+    EXEMPLE: curl http://localhost:5000/livres
 ```
+       {
+    "livres": [
         {
-    "books": [
-        {
-            "auteur": "Gege Atakumi",
-            "code_ISBN": "979-1-0328",
-            "date_publication": "03-02-2022",
-            "editeur": "Ki-oon",
-            "id": 2,
-            "titre": "Jujutsu Kaisen T13"
-        },
-        {
-            "auteur": "Louis Saulnier, Théodore Gringoire",
-            "code_ISBN": "978-2-0802",
-            "date_publication": "26-02-2022",
-            "editeur": "Flammarion",
+            "auteur": "bernard dae",
+            "categorie_id": 2,
+            "date_publication": "Thu, 03 Feb 2022 00:00:00 GMT",
+            "editeur": "ste",
             "id": 3,
-            "titre": "Le répertoire de la cuisine"
+            "isnb": "paoo",
+            "titre": "pagneir"
         },
         {
-            "auteur": "Katia Bricka",
-            "code_ISBN": "978-2-8977",
-            "date_publication": "25-02-2022",
-            "editeur": "Modus Vivendi",
+            "auteur": "bere",
+            "categorie_id": 2,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "se",
             "id": 4,
-            "titre": "La recette parfaite"
+            "isnb": "pabi",
+            "titre": "per"
         },
         {
-            "auteur": "Azychika, Takumi Fukui",
-            "code_ISBN": "979-1-0327",
-            "date_publication": "03-02-2022",
-            "editeur": "Ki-oon",
-            "id": 1,
-            "titre": "Jujutsu Kaisen"
+            "auteur": "bernakkre",
+            "categorie_id": 3,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "stlle",
+            "id": 5,
+            "isnb": "pavb",
+            "titre": "pagnvver"
+        },
+        {
+            "auteur": "bernakkrett",
+            "categorie_id": 3,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "stllett",
+            "id": 6,
+            "isnb": "pavvvb",
+            "titre": "pagnvvert"
+        },
+        {
+            "auteur": "bernakrrkrett",
+            "categorie_id": 4,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "stllerrtt",
+            "id": 7,
+            "isnb": "pavvvrb",
+            "titre": "pagnvrrvert"
+        },
+        {
+            "auteur": "berett",
+            "categorie_id": 4,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "stllerrtfft",
+            "id": 8,
+            "isnb": "parb",
+            "titre": "pagvert"
+        },
+        {
+            "auteur": "berkrpppett",
+            "categorie_id": 5,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "stptt",
+            "id": 10,
+            "isnb": "pmbbgb",
+            "titre": "parkkt"
+        },
+        {
+            "auteur": "TUNDE",
+            "categorie_id": 6,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "BELAC",
+            "id": 11,
+            "isnb": "pmyhb",
+            "titre": "phhart"
         }
     ],
-    "status_code": 200,
     "success": true,
-    "total_books": 4
+    "total": 8
 }
 ```
 
-.##GET/books(book_id)
+.##GET/livres(livre_id)
   GENERAL:
   Cet endpoint permet de récupérer les informations d'un livre particulier s'il existe par le biais de l'ID.
 
-    EXEMPLE: http://localhost:5000/books/3
+    EXEMPLE: http://localhost:5000/livres/3
 ```
-    {
-        "auteur": "Louis Saulnier, Théodore Gringoire",
-        "code_ISBN": "978-2-0802",
-        "date_publication": "26-02-2022",
-        "editeur": "Flammarion",
+   {
+    "livres": {
+        "auteur": "bernard dae",
+        "categorie_id": 2,
+        "date_publication": "Thu, 03 Feb 2022 00:00:00 GMT",
+        "editeur": "ste",
         "id": 3,
-        "titre": "Le répertoire de la cuisine"
-    }
+        "isnb": "paoo",
+        "titre": "pagneir"
+    },
 ```
 
 
-. ## DELETE/books (book_id)
+. ## DELETE/livres (livre_id)
 
     GENERAL:
         Supprimer un element si l'ID existe. Retourne l'ID du livre supprimé, la valeur du succès et le nouveau total.
 
-        EXEMPLE: curl -X DELETE http://localhost:5000/books/4
+        EXEMPLE: curl -X DELETE http://localhost:5000/livre/1
 ```
     {
-        "id_book": 4,
+        "id_livre": 1,
         "new_total": 3,
         "success": true
     }
 ```
 
-. ##PATCH/books(book_id)
+. ##PATCH/livres(livre_id)
   GENERAL:
   Cet endpoint permet de mettre à jour, le titre, l'auteur, et l'éditeur du livre.
   Il retourne un livre mis à jour.
 
   EXEMPLE.....Avec Patch
-  ``` curl -X PATCH http://localhost:5000/books/1 -H "Content-Type:application/json" -d '{"auteur": "Azychika, Takumi Fukui","editeur": "Ki-oon","titre": "Jujutsu Kaisen"}'
+  ``` curl -X PATCH http://localhost:5000/livres/1 -H "Content-Type:application/json" -d '{"auteur": "Azychika, Takumi Fukui","editeur": "Ki-oon","titre": "Jujutsu Kaisen"}'
   ```
   ```
     {
@@ -175,59 +216,46 @@ L'API vous renvoie 4 types d'erreur:
     EXEMPLE: curl http://localhost:5000/categories
 
         {
-    "category": [
+    "categories": [
         {
-            "categorie": "Litterature",
-            "id": 1
+            "id": 1,
+            "libelle_categorie": "action"
         },
         {
-            "categorie": "Humour",
-            "id": 2
+            "id": 3,
+            "libelle_categorie": "fixion"
         },
         {
-            "categorie": "Tourisme et voyage",
-            "id": 3
+            "id": 4,
+            "libelle_categorie": "harlequin"
         },
         {
-            "categorie": "Histoire",
-            "id": 5
+            "id": 5,
+            "libelle_categorie": "sup"
         },
         {
-            "categorie": "Cuisine",
-            "id": 6
+            "id": 6,
+            "libelle_categorie": "sup1"
         },
         {
-            "categorie": "Droit et Economie",
-            "id": 7
+            "id": 2,
+            "libelle_categorie": "amourr"
         },
         {
-            "categorie": "Informatique et internet",
-            "id": 8
+            "id": 7,
+            "libelle_categorie": "bb"
         },
         {
-            "categorie": "Sciences sociales",
-            "id": 9
+            "id": 8,
+            "libelle_categorie": "kcksb"
         },
         {
-            "categorie": "Essais et documents",
-            "id": 10
-        },
-        {
-            "categorie": "Religion et spiritualité",
-            "id": 11
-        },
-        {
-            "categorie": "Art, musique et cinéma",
-            "id": 12
-        },
-        {
-            "categorie": "Bandes Dessinées",
-            "id": 4
+            "id": 9,
+            "libelle_categorie": "kBb"
         }
     ],
-    "status_code": 200,
     "success": true,
-    "total": 12
+    "total": 9
 }
 ```
 
@@ -235,12 +263,16 @@ L'API vous renvoie 4 types d'erreur:
   GENERAL:
   Cet endpoint permet de récupérer les informations d'une categorie si elle existe par le biais de l'ID.
 
-    EXEMPLE: http://localhost:5000/categories/6
+    EXEMPLE: http://localhost:5000/categories/2
 ```
-    {
-        "categorie": "Cuisine",
-        "id": 6
-    }
+   {
+    "categories": {
+        "id": 2,
+        "libelle_categorie": "amourr"
+    },
+    "selected_id": 2,
+    "succes": true
+}
 ```
 
 . ## DELETE/categories (categories_id)
@@ -248,13 +280,12 @@ L'API vous renvoie 4 types d'erreur:
     GENERAL:
         Supprimer un element si l'ID existe. Retourne l'ID da la catégorie supprimé, la valeur du succès et le nouveau total.
 
-        EXEMPLE: curl -X DELETE http://localhost:5000/categories/11
+        EXEMPLE: curl -X DELETE http://localhost:5000/categories/9
 ```
     {
-        "id_cat": 11,
-        "new_total": 10,
-        "status": 200,
-        "success": true
+
+
+
     }
 ```
 
@@ -272,38 +303,36 @@ L'API vous renvoie 4 types d'erreur:
         "id": 4
     }
 
-.##GET/books/categories(categorie_id)
+.##GET/categories/(categorie_id)/livres
   GENERAL:
   Cet endpoint permet de lister les livres appartenant à une categorie donnée.
   Il renvoie la classe de la categorie et les livres l'appartenant.
 
-    EXEMPLE: http://localhost:5000/books/categories/4
+    EXEMPLE: http://localhost:5000/categories/2/livres
 ```
     {
-    "Status_code": 200,
-    "Success": true,
-    "books": [
+    "Nombre de livre de la categorie": 2,
+    "livres": [
         {
-            "auteur": "Gege Atakumi",
-            "code_ISBN": "979-1-0328",
-            "date_publication": "03-02-2022",
-            "editeur": "Ki-oon",
-            "id": 2,
-            "titre": "Jujutsu Kaisen T13"
+            "auteur": "bernard dae",
+            "categorie_id": 2,
+            "date_publication": "Thu, 03 Feb 2022 00:00:00 GMT",
+            "editeur": "ste",
+            "id": 3,
+            "isnb": "paoo",
+            "titre": "pagneir"
         },
         {
-            "auteur": "Azychika, Takumi Fukui",
-            "code_ISBN": "979-1-0327",
-            "date_publication": "03-02-2022",
-            "editeur": "Ki-oon",
-            "id": 1,
-            "titre": "Jujutsu Kaisen"
+            "auteur": "bere",
+            "categorie_id": 2,
+            "date_publication": "Wed, 09 Feb 2022 00:00:00 GMT",
+            "editeur": "se",
+            "id": 4,
+            "isnb": "pabi",
+            "titre": "per"
         }
     ],
-    "classe": {
-        "categorie": "Bandes Dessinées",
-        "id": 4
-    }
+    "success": true
 }
 ```
 
